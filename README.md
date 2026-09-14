@@ -18,7 +18,7 @@ Application Web Java Enterprise Edition (JEE) pour la gestion d'un magasin high-
 
 ## Démarrage
 
-`ash
+`bash
 mvn clean compile
 mvn org.eclipse.jetty:jetty-maven-plugin:run -Djetty.port=8080
 `
