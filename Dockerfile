@@ -10,5 +10,8 @@ FROM tomcat:9.0-jdk11-temurin
 RUN rm -rf /usr/local/tomcat/webapps/*
 COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 
+# Disable Tomcat shutdown port 8005 to prevent health check warnings
+RUN sed -i 's/port="8005" shutdown="SHUTDOWN"/port="-1" shutdown="SHUTDOWN"/g' /usr/local/tomcat/conf/server.xml
+
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
